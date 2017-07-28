@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.26711.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcanaHeart3lmsssRankingObserver.Functions", "ArcanaHeart3lmsssRankingObserver.Functions\ArcanaHeart3lmsssRankingObserver.Functions.csproj", "{C4018CC1-F538-45ED-B0EB-A4FE2ED2BEAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcanaHeart3lmsssRankingObserver.Core", "ArcanaHeart3lmsssRankingObserver.Core\ArcanaHeart3lmsssRankingObserver.Core.csproj", "{3925F3E9-15DB-4269-99A4-5EA50F109915}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArcanaHeart3lmsssRankingObserver.Test", "ArcanaHeart3lmsssRankingObserver.Test\ArcanaHeart3lmsssRankingObserver.Test.csproj", "{BE7B70F4-6BF9-4D28-98B3-973F933EF296}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{C4018CC1-F538-45ED-B0EB-A4FE2ED2BEAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4018CC1-F538-45ED-B0EB-A4FE2ED2BEAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4018CC1-F538-45ED-B0EB-A4FE2ED2BEAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3925F3E9-15DB-4269-99A4-5EA50F109915}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3925F3E9-15DB-4269-99A4-5EA50F109915}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3925F3E9-15DB-4269-99A4-5EA50F109915}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3925F3E9-15DB-4269-99A4-5EA50F109915}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE7B70F4-6BF9-4D28-98B3-973F933EF296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE7B70F4-6BF9-4D28-98B3-973F933EF296}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE7B70F4-6BF9-4D28-98B3-973F933EF296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE7B70F4-6BF9-4D28-98B3-973F933EF296}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
