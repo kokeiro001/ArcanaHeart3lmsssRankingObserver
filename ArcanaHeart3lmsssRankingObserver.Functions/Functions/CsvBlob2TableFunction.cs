@@ -24,7 +24,6 @@ namespace ArcanaHeart3lmsssRankingObserver.Functions
 
             try
             {
-
                 using (var streamReader = new StreamReader(myBlob))
                 using (var csvReader = new CsvReader(streamReader))
                 {

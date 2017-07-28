@@ -30,13 +30,22 @@ namespace ArcanaHeart3lmsssRankingObserver.Functions
 
             foreach (CharacterId characterId in Enum.GetValues(typeof(CharacterId)))
             {
-                var fileName = $"{characterId.ToString().ToLower()}_{now.ToString("yyyyMMdd-hhmm")}.csv";
-
-                CloudBlockBlob blockBlob = blobContainer.GetBlockBlobReference(fileName);
-
-                using (var stream = await client.DownloadCsvAsync(characterId))
+                try
                 {
-                    await blockBlob.UploadFromStreamAsync(stream);
+                    log.Info($"beginDownload characterId={characterId}");
+
+                    var fileName = $"{characterId.ToString().ToLower()}_{now.ToString("yyyyMMdd-hhmm")}.csv";
+
+                    var blockBlob = blobContainer.GetBlockBlobReference(fileName);
+
+                    using (var stream = await client.DownloadCsvAsync(characterId))
+                    {
+                        await blockBlob.UploadFromStreamAsync(stream);
+                    }
+                }
+                catch (Exception e)
+                {
+                    log.Error(e.Message + " " + e.StackTrace);
                 }
                 await Task.Delay(TimeSpan.FromSeconds(5));
             }
