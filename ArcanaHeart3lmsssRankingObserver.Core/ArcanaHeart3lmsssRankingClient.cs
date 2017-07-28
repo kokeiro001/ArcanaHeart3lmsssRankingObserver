@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
+using CsvHelper.Configuration;
+using Microsoft.WindowsAzure.Storage.Table;
 
 namespace ArcanaHeart3lmsssRankingObserver.Core
 {
@@ -80,6 +82,95 @@ namespace ArcanaHeart3lmsssRankingObserver.Core
         {
             var uri = CharacterRankingCsvUrl.Dictionary[characterId];
             return await httpClient.GetStreamAsync(uri);
+        }
+    }
+
+    public class RankingCsvViewModel
+    {
+        public int record_id { get; set; }
+        public int rank { get; set; }
+        public int rank2 { get; set; }
+        public long card_id { get; set; }
+        public string player_name { get; set; }
+        public int pcol1 { get; set; }
+        public string pcol1_name { get; set; }
+        public int score_ui1 { get; set; }
+        public int score_ui5 { get; set; }
+        public int last_play_tenpo_id { get; set; }
+        public string tenpo_name { get; set; }
+        public int pref_id { get; set; }
+        public string pref { get; set; }
+        public int area_id { get; set; }
+        public string area { get; set; }
+        public DateTime start_date { get; set; }
+    }
+
+    public sealed class RankingCsvViewModelMap : CsvClassMap<RankingCsvViewModel>
+    {
+        public RankingCsvViewModelMap()
+        {
+            Map(m => m.record_id).Index(0).Default(0);
+            Map(m => m.rank).Index(1).Default(0);
+            Map(m => m.rank2).Index(2).Default(0);
+            Map(m => m.card_id).Index(3).Default(0);
+            Map(m => m.player_name).Index(4).Default("");
+            Map(m => m.pcol1).Index(5).Default(0);
+            Map(m => m.pcol1_name).Index(6).Default("");
+            Map(m => m.score_ui1).Index(7).Default(0);
+            Map(m => m.score_ui5).Index(8).Default(0);
+            Map(m => m.last_play_tenpo_id).Index(9).Default(-1);
+            Map(m => m.tenpo_name).Index(10).Default("");
+            Map(m => m.pref_id).Index(11).Default(-1);
+            Map(m => m.pref).Index(12).Default("");
+            Map(m => m.area_id).Index(13).Default(-1);
+            Map(m => m.area).Index(14).Default("");
+            Map(m => m.start_date).Index(15);
+        }
+    }
+
+    public class RankingEntity : TableEntity
+    {
+        public int record_id { get; set; }
+        public int rank { get; set; }
+        public int rank2 { get; set; }
+        public long card_id { get; set; }
+        public string player_name { get; set; }
+        public int pcol1 { get; set; }
+        public string pcol1_name { get; set; }
+        public int score_ui1 { get; set; }
+        public int score_ui5 { get; set; }
+        public int last_play_tenpo_id { get; set; }
+        public string tenpo_name { get; set; }
+        public int pref_id { get; set; }
+        public string pref { get; set; }
+        public int area_id { get; set; }
+        public string area { get; set; }
+        public DateTime start_date { get; set; }
+    }
+
+    public static class RankingConverter
+    {
+        public static RankingEntity ToEntity(this RankingCsvViewModel model)
+        {
+            return new RankingEntity
+            {
+                record_id = model.record_id,
+                rank = model.rank,
+                rank2 = model.rank2,
+                card_id = model.card_id,
+                player_name = model.player_name,
+                pcol1 = model.pcol1,
+                pcol1_name = model.pcol1_name,
+                score_ui1 = model.score_ui1,
+                score_ui5 = model.score_ui5,
+                last_play_tenpo_id = model.last_play_tenpo_id,
+                tenpo_name = model.tenpo_name,
+                pref_id = model.pref_id,
+                pref = model.pref,
+                area_id = model.area_id,
+                area = model.area,
+                start_date = model.start_date,
+            };
         }
     }
 }
